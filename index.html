@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Button Maker</title>
+    <style id="first-style"></style>
+    <style id="second-style"></style>
+    <style id="third-style"></style>
+    <style id="fourth-style"></style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+        <div id="first-row">
+
+            <div class="preview-wrapper">
+
+                <div class="preview" id="preview">
+                    <button class="preview-btn">Button</button>
+                </div>
+        
+            </div>
+
+            <div class="output output-html" id="output-html">
+                <div>&#60;button class="<span id="output-html-class">axobtn</span>"<span id="output-html-id"></span>><span id="output-html-text">Button</span>&#60;/button></div>
+            </div>
+
+            <div id="output-css-wrapper">
+                <button onclick="copyCSS('#output-css')" id="copy-btn-css" class="copy-btn"><img src="copy.svg" alt="Copy" id="copy-btn-css-img"></button>
+                <div class="output output-css" id="output-css">
+                    <span id="output-css-import"></span>
+                    <span id="output-css-identifier">.</span><span id="output-css-classname">axobtn</span> { <br>
+                    <span id="output-css-text-size"></span>
+                    <span id="output-css-text-weight"></span>
+                    <span id="output-css-text-color"></span>
+                    <span id="output-css-text-style"></span>
+                    <span id="output-css-font-family"></span>
+                    <span id="output-css-border"></span>
+                    <span id="output-css-border-radius"></span>
+                    <span id="output-css-border-width"></span>
+                    <span id="output-css-padding"></span>
+                    <span id="output-css-bg"></span>
+                    <span id="ot-c">&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;</span>
+                    <pre id="ot-ocss"></pre>
+                    <br>}
+                    <div class="output-hover-css">
+                        <br>
+                        <span id="output-hover-css-identifier">.</span><span id="output-hover-css-classname">axobtn</span>:hover { <br>
+                        <span id="ot-hc"></span>
+                        <pre id="ot-ohcss"></pre>
+                        <br>}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+        <div id="second-third-row">
+            <div class="controls" id="controls">
+
+                <div class="controls-section">
+                    <form onsubmit="return btnClassName()"><input type="text" placeholder="Class Name" id="btn-classname"></form>
+                    <form onsubmit="return addId()"><input type="text" placeholder="Add id" id="add-id"></form>
+                    <input type="checkbox" onclick="useId()" id="use-id"><span id="besideCheckbox">Use id instead of class</span>
+                </div>
+
+                <div class="controls-section">
+                    <p class="controls-text">Text</p>
+                    <form onsubmit="return btnText()"><input type="text" placeholder="Button Text" id="btn-text"></form>
+                    <form onsubmit="return btnTextSize()"><input type="text" placeholder="Font Size" id="btn-text-size"></form>
+                    <form onsubmit="return btnTextWeight()"><input type="text" placeholder="Font Weight" id="btn-text-weight"></form>
+                    <form onsubmit="return btnTextColor()" id="besideEachOther">
+                        <input type="text" placeholder="Text Color" name="btn-text-color" id="btn-text-color">
+                        <input type="color" id="btn-text-color-picker">
+                        <button type="submit" id="button">Set Color</button>
+                    </form>
+                    <form onsubmit="return importFont()"><input type="text" placeholder="@import font" id="import-font"></form>
+                    <form onsubmit="return fontFamily()"><input type="text" placeholder="Font Family" id="font-family"></form>
+                    <input type="checkbox" onclick="btnTextItalic()"><span id="besideCheckbox">Italic Text</span>
+                </div>
+        
+                <div class="controls-section">
+                    <p class="controls-text">Size</p>
+                    <form onsubmit="return btnPadding()"><input type="text" placeholder="Padding" id="padding"></form>
+                </div>
+    
+                <div class="controls-section">
+                    <p class="controls-text">Background</p>
+                    <div id="besideEachOther">
+                        <form onsubmit="return btnbg()"><input type="text" placeholder="Background" id="background"></form>
+                        <input type="color" id="bg-color-picker">
+                        <button onclick="bgcolorPicker()" id="button">Set Color Picker BG</button>
+                    </div>
+                </div>
+        
+                <div class="controls-section">
+                    <p class="controls-text">Border</p>
+                    <input type="checkbox" onclick="borderToggle()" id="border-onoff"><span id="besideCheckbox">Disable Border</span>
+                    <form onsubmit="return borderWidth()"><input type="text" placeholder="Border Width" id="border-width"></form>
+                    <form onsubmit="return borderRadius()"><input type="text" placeholder="Border Radius" id="border-radius"></form>
+                </div>
+
+                <div class="controls-section">
+                    <p class="controls-text">Miscellaneous</p>
+                    <form onsubmit="return btnCursor()"><input type="text" placeholder="Cursor" id="cursor"></form>
+                    <textarea onkeyup="writeCSS();" placeholder="Write your own CSS" id="write-css"></textarea>
+                </div>
+
+                <div class="controls-separator">
+                    <p>Hover State</p>
+                </div>
+
+                <p class="controls-separator-p"><input id="hover-css-enable" onclick="hoverCSSEnable()" type="checkbox" class="controls-separator-checkbox"> <span class="text">Enable Hover State</span></p>
+
+                <div id="controls-hover-state-wrapper">
+                    <div class="controls-section">
+                        <p class="controls-text">Miscellaneous</p>
+                        <form onsubmit="return btnCursorHover()"><input type="text" placeholder="Cursor" id="cursor-hover"></form>
+                        <textarea onkeyup="writeCSSHover();" placeholder="Write your own hover CSS" id="write-css-hover"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="third-row">
+
+                <div class="settings">
+                    <p class="header">Settings</p>
+                    <button onclick="fixedPreview()" id="button">Fixed Preview</button>
+                    <button onclick="noScroll()" id="button" class="mb-display">No Scroll</button>
+                    <button onclick="devToolsViaBtn()" id="button">DevTools</button>
+                </div>
+
+                <div class="templates" id="templates">
+                    <div class="templates-heading">
+                        <p class="header">Templates</p>
+                        <div class="templates-loader-div">
+                            <svg class="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgba(255, 255, 255, 0); display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                                <rect fill="#262626" x="15" y="15" width="30" height="30" rx="3" ry="3">
+                                <animate attributeName="x" dur="2s" repeatCount="indefinite" keyTimes="0;0.083;0.25;0.333;0.5;0.583;0.75;0.833;1" values="15;55;55;55;55;15;15;15;15" begin="-1.8333333333333333s"></animate>
+                                <animate attributeName="y" dur="2s" repeatCount="indefinite" keyTimes="0;0.083;0.25;0.333;0.5;0.583;0.75;0.833;1" values="15;55;55;55;55;15;15;15;15" begin="-1.3333333333333333s"></animate>
+                                </rect><rect fill="#e84033" x="15" y="15" width="30" height="30" rx="3" ry="3">
+                                <animate attributeName="x" dur="2s" repeatCount="indefinite" keyTimes="0;0.083;0.25;0.333;0.5;0.583;0.75;0.833;1" values="15;55;55;55;55;15;15;15;15" begin="-1.1666666666666667s"></animate>
+                                <animate attributeName="y" dur="2s" repeatCount="indefinite" keyTimes="0;0.083;0.25;0.333;0.5;0.583;0.75;0.833;1" values="15;55;55;55;55;15;15;15;15" begin="-0.6666666666666666s"></animate>
+                                </rect><rect fill="#6366f1" x="15" y="15" width="30" height="30" rx="3" ry="3">
+                                <animate attributeName="x" dur="2s" repeatCount="indefinite" keyTimes="0;0.083;0.25;0.333;0.5;0.583;0.75;0.833;1" values="15;55;55;55;55;15;15;15;15" begin="-0.5s"></animate>
+                                <animate attributeName="y" dur="2s" repeatCount="indefinite" keyTimes="0;0.083;0.25;0.333;0.5;0.583;0.75;0.833;1" values="15;55;55;55;55;15;15;15;15" begin="0s"></animate>
+                                </rect>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="templates-wrapper">
+                        <div onclick="templateGradient()">Gradient</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="dev-tools">
+            <p>Input Fields: <span id="dt-tif"></span></p>
+            <p>Input[type="text"] Fields: <span id="dt-tift"></span></p>
+            <p>Button Changes: <span id="dt-lbc">none</span></p>
+            <p>Hide: <button onclick="dtHC()">Controls</button> / <button onclick="dthpc()">PreviewCode</button> / <button onclick="dthst()">SettingsTemplates</button></p>
+            <button onclick="dtSEIF()">Show empty input fields</button>
+        </div>
+
+        <div style="display: flex;justify-content: center;">
+            <div class="error-popup"><span id="error-text"></span> <button onclick="errorClose()"><img src="close.svg" alt="Close"></button></div>
+        </div>
+
+        <div class="side-popup">
+            <img alt="Alert" id="side-popup-img">
+            <div>
+                <p id="side-popup-headline"></p>
+                <p id="side-popup-text"></p>
+            </div>
+            <button id="side-popup-close" onclick="sidePopupClose()"><img src="close.svg" alt="Close"></button>
+        </div>
+
+</body>
+</html>

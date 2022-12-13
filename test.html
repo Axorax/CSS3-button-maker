@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+var img=new Image();
+img.crossOrigin='anonymous';
+img.onload=start;
+img.src="https://media.discordapp.net/attachments/962830190482964560/967815967939887144/unknown.png";
+function start(){
+    resizeImg(img,0.50);
+    resizeImg(img,1);
+}
+
+function resizeImg(img,scaleFactor){
+    var c=document.createElement('canvas');
+    var ctx=c.getContext('2d');
+    var iw=img.width;
+    var ih=img.height;
+    c.width=iw*scaleFactor;
+    c.height=ih*scaleFactor;
+    ctx.drawImage(img,0,0,iw*scaleFactor,ih*scaleFactor);
+    var scaledImg=new Image();
+    scaledImg.onload=function(){
+        // scaledImg is a scaled imageObject for upload/download
+        // For testing, just append it to the DOM
+        document.body.appendChild(scaledImg);
+    }
+    scaledImg.src=c.toDataURL();
+}
+
+// var i=0;
+// setInterval(function(){
+//     var titles=['Hi everyone', 'Salut tout le monde', 'Cao svima'];
+//     if(i===titles.length) {
+//         i=0;
+//     }
+//     document.title = titles[i];
+//     i++;
+// }, 5000);
+    </script>
+</head>
+<body>
+    <h4>Original image</h4>
+<img src='https://dl.dropboxusercontent.com/u/139992952/multple/marioRunningRight1.png' crossOrigin='anonymous'>
+<br>
+<h4>Resized images at 50% and at 200%</h4>
+</body>
+</html>
